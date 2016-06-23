@@ -3,12 +3,12 @@
   yum:
     name: "{{ item }}"
     state: present
-  with_items: rvm.required_packages
+  with_items: "{{ rvm.required_packages }}"
   when: ansible_os_family == "RedHat"
 
 - name: ensure necessary apt packages are installed
   apt:
     name: "{{ item }}"
     state: present
-  with_items: rvm.required_packages
+  with_items: "{{ rvm.required_packages }}"
   when: ansible_os_family == "Debian"
