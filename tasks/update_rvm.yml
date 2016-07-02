@@ -2,4 +2,4 @@
 - include: ./receive_key.yml
 
 - name: updating RVM
-  shell: "source {{rvm.init_script}} && rvm get stable executable=/bin/bash"
+  shell: "source {{rvm_init_script}} && rvm get stable executable=/bin/bash"

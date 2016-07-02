@@ -3,7 +3,7 @@
 
 - name: downloading RVM installer
   get_url:
-    url: "{{rvm.url}}"
+    url: "{{rvm_url}}"
     dest: "{{rvm.temp_installer_path}}"
 
 - name: set executable RVM installer
@@ -12,7 +12,7 @@
     mode: 0755
 
 - name: installing RVM
-  command: "{{rvm.temp_installer_path}} --path {{rvm.root}} stable"
+  command: "{{rvm.temp_installer_path}} --path {{rvm_root}} stable"
 
 - name: removing RVM installer
   file:
@@ -20,4 +20,4 @@
     state: absent
 
 - name: setting RVM autolibs on
-  command: "{{rvm.root}}/bin/rvm autolibs 3"
+  command: "{{rvm_root}}/bin/rvm autolibs 3"
