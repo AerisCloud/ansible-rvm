@@ -13,3 +13,4 @@ rvm_root: /usr/local/rvm
 rvm_init_script: /etc/profile.d/rvm.sh
 rvm_auto_update_rvm: true
 rvm_ruby_version: ruby-2.2.0
+rvm_autolibs: 3

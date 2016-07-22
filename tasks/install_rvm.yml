@@ -19,5 +19,5 @@
     path: "{{rvm.temp_installer_path}}"
     state: absent
 
-- name: setting RVM autolibs on
-  command: "{{rvm_root}}/bin/rvm autolibs 3"
+- name: setting RVM autolibs option
+  command: "{{rvm_root}}/bin/rvm autolibs {{rvm_autolibs}}"
