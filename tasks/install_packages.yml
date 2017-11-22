@@ -4,7 +4,6 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ rvm_required_packages }}"
-  sudo: true
   when: ansible_os_family == "RedHat"
 
 - name: ensure necessary apt packages are installed
@@ -12,5 +11,4 @@
     name: "{{ item }}"
     state: present
   with_items: "{{ rvm_required_packages }}"
-  sudo: true
   when: ansible_os_family == "Debian"

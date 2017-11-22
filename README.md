@@ -1,9 +1,8 @@
 Ansible RVM role
 ================
 
-This Ansible role installs RVM as root and the required ruby version.
-If user isn't root (executing without sudo) then RVM will be installed to the user home directory,
-but you need to change paths to it own RVM through variables `rvm_root` and `rvm_init_script`.
+This Ansible role installs RVM and the required ruby version.
+Installation is possible for system or for single user (without root privileges)
 
 Requirements
 ------------
@@ -27,7 +26,14 @@ Role Variables
 
 The last two variables are set according to whether a `system`-wide install (Multi-User install), or a Single-User install has been chosen with `rvm_install_type`.
 
-The playbook runs with root permissions by default if the `ansible_ssh_user` that is running your playbook has `sudo` privileges, and `rvm_install_type` is set to `system`.
+The palybook should runs on user with sufficient permissions:
+- to install dependencies via `apt` or `yum` if you do not have installed `curl` and `gnupg2` pakages
+- to install dependencies via `apt` or `yum` if you set `rvm_autolibs` to `3` or `4` (default `3`)
+- to install in system path for example in `system` mode (`rvm_install_type`  variable) 
+
+If you want to install on unprivileged user you should have system dependencies installed and set:
+- `rvm_install_type` to `user`
+- `rvm_autolibs` prefably to `2`
 
 When the playbook is run with `rvm_install_type = user`, the playbook will install RVM to the home directory of the `ansible_ssh_user`.
 The defaults for the last two variables are then:

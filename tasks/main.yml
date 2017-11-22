@@ -1,10 +1,10 @@
 ---
-- name: include install type vars
+- name: Include install type vars
   include_vars: "{{ rvm_install_type }}.yml"
 
 - include: ./install_packages.yml
 
-- name: checking that RVM is installed
+- name: Check if RVM installed
   stat:
     path: "{{rvm_init_script}}"
   ignore_errors: True
@@ -20,4 +20,4 @@
 - include: ./select_ruby.yml
 
 - include: ./install_ruby.yml
-  when: rvm_select_ruby_version_user|failed or rvm_select_ruby_version_root|failed
+  when: rvm_select_ruby_version is defined and rvm_select_ruby_version.rc != 0
