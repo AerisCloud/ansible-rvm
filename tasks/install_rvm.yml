@@ -1,5 +1,5 @@
 ---
-- include: ./receive_key.yml
+- include_tasks: ./receive_key.yml
 
 - name: Download RVM installer
   get_url:
