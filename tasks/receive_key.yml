@@ -9,4 +9,6 @@
 
 - name: Install GPG key
   shell: "curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
+  args:
+    warn: False
   when: mpapis_gpg_key_exists is defined and mpapis_gpg_key_exists.rc is defined and mpapis_gpg_key_exists.rc != 0
